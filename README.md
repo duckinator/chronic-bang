@@ -41,7 +41,7 @@ invalid =
 
 if invalid
   $stderr.puts "#$0: could not parse date: #{invalid}"
-  exit
+  exit 1
 end
 ```
 
@@ -51,8 +51,8 @@ Can become this:
 require 'chronic/bang'
 
 begin
-  start_date = Chronic.parse(ARGV.delete_at(0))
-  end_date   = Chronic.parse(ARGV.delete_at(0))
+  start_date = Chronic.parse!(ARGV.delete_at(0))
+  end_date   = Chronic.parse!(ARGV.delete_at(0))
 rescue Chronic::ParseError => e
   $stderr.puts "#$0: #{e.message}"
   exit 1
