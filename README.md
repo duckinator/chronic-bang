@@ -24,8 +24,11 @@ This:
 ```ruby
 require 'chronic'
 
-start_date = Chronic.parse(ARGV.delete_at(0))
-end_date   = Chronic.parse(ARGV.delete_at(0))
+start_date_str = ARGV.delete_at(0)
+end_date_str   = ARGV.delete_at(0)
+
+start_date = Chronic.parse(start_date_str)
+end_date   = Chronic.parse(end_date_str)
 
 invalid =
   if start_date.nil? && (start_date_str.nil? || !start_date_str.empty?)
